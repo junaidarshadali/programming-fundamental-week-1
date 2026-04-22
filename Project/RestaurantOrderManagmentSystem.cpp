@@ -375,9 +375,42 @@ int main()
                         }
                         else if (adminOption == 6)
                         {
-                            cout << "Thank You";
+                            system("cls");
 
-                            isFound = true;
+                            cout << "----------- Food Menu -----------\n";
+                            for (int i = 0; i < foodCount; i++)
+                            {
+                                cout << i + 1 << ". " << food[i] << "\tRs." << foodPrice[i] << endl;
+                            }
+
+                            cout << "\nEnter food number to remove: ";
+                            int removeIndex;
+                            cin >> removeIndex;
+
+                            if (removeIndex >= 1 && removeIndex <= foodCount)
+                            {
+                                // Shift items left
+                                for (int i = removeIndex - 1; i < foodCount - 1; i++)
+                                {
+                                    food[i] = food[i + 1];
+                                    foodPrice[i] = foodPrice[i + 1];
+                                }
+
+                                foodCount--; // reduce count
+
+                                cout << "\nItem removed successfully!";
+                            }
+                            else
+                            {
+                                cout << "\nInvalid choice!";
+                            }
+
+                            getch();
+                        }
+                        else if(adminOption==7){
+                            cout<<"Exit Admin Panel ";
+                            getch();
+                            isFound=true;
                             break;
                         }
                     }
